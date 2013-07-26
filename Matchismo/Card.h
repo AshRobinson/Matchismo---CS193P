@@ -12,7 +12,9 @@
 
 @property (strong, nonatomic) NSString *contents;
 
-- (Card*)drawCard;
-- (void)addCard:(Card*)card atTop:(BOOL) atTop;
+@property (nonatomic, getter = isFaceUp) BOOL faceUp;
+@property (nonatomic, getter = isUnplayable) BOOL unplayable;
+
+- (int)match:(NSArray *)otherCards;
 
 @end

@@ -8,37 +8,19 @@
 
 #import "Card.h"
 
-@interface Card()
-@property (strong, nonatomic) NSMutableArray *otherCards;
-@end
-
 @implementation Card
 
-- (NSMutableArray *)otherCards
+- (int)match:(NSArray *)otherCards
 {
-    if (_otherCards) {
-        _otherCards = [[NSMutableArray alloc] init];
-    }
-    return _otherCards;
-}
-
-
-- (Card*)drawCard
-{
-    NSUInteger index = arc4random() % self.otherCards.count;
-    Card *card = self.otherCards[index];
-    return card;
-}
-
-- (void)addCard:(Card*)card atTop:(BOOL) atTop;
-{
-    if(card){
-        if(atTop){
-            [self.otherCards insertObject:card atIndex:0];
-        } else {
-            [self.otherCards addObject:card];
+    int score = 0;
+    
+    for (Card *card in otherCards) {
+        if ([card.contents isEqualToString:self.contents]) {
+            score = 1;
         }
     }
+    
+    return score;
 }
 
 @end
