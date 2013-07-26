@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		583A2AE517A333B500D526D3 /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = 583A2AE417A333B500D526D3 /* Deck.m */; };
 		58E45DA717A325D40045B700 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E45DA617A325D40045B700 /* UIKit.framework */; };
 		58E45DA917A325D40045B700 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E45DA817A325D40045B700 /* Foundation.framework */; };
 		58E45DAB17A325D40045B700 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E45DAA17A325D40045B700 /* CoreGraphics.framework */; };
@@ -22,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		583A2AE317A333B500D526D3 /* Deck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Deck.h; sourceTree = "<group>"; };
+		583A2AE417A333B500D526D3 /* Deck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Deck.m; sourceTree = "<group>"; };
 		58E45DA317A325D40045B700 /* Matchismo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Matchismo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58E45DA617A325D40045B700 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		58E45DA817A325D40045B700 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -89,6 +92,8 @@
 				58E45DBE17A325D40045B700 /* MainStoryboard.storyboard */,
 				58E45DC917A327E20045B700 /* Card.h */,
 				58E45DCA17A327E20045B700 /* Card.m */,
+				583A2AE317A333B500D526D3 /* Deck.h */,
+				583A2AE417A333B500D526D3 /* Deck.m */,
 				58E45DC117A325D40045B700 /* CardGameViewController.h */,
 				58E45DC217A325D40045B700 /* CardGameViewController.m */,
 				58E45DAD17A325D40045B700 /* Supporting Files */,
@@ -183,6 +188,7 @@
 				58E45DB717A325D40045B700 /* CardGameAppDelegate.m in Sources */,
 				58E45DC317A325D40045B700 /* CardGameViewController.m in Sources */,
 				58E45DCB17A327E20045B700 /* Card.m in Sources */,
+				583A2AE517A333B500D526D3 /* Deck.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,6 +311,7 @@
 				58E45DC817A325D40045B700 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
