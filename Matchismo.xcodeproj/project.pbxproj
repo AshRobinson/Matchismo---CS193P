@@ -59,6 +59,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		583A2AE617A3355C00D526D3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				58E45DC917A327E20045B700 /* Card.h */,
+				58E45DCA17A327E20045B700 /* Card.m */,
+				583A2AE317A333B500D526D3 /* Deck.h */,
+				583A2AE417A333B500D526D3 /* Deck.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		58E45D9A17A325D40045B700 = {
 			isa = PBXGroup;
 			children = (
@@ -89,11 +100,8 @@
 		58E45DAC17A325D40045B700 /* Matchismo */ = {
 			isa = PBXGroup;
 			children = (
+				583A2AE617A3355C00D526D3 /* Model */,
 				58E45DBE17A325D40045B700 /* MainStoryboard.storyboard */,
-				58E45DC917A327E20045B700 /* Card.h */,
-				58E45DCA17A327E20045B700 /* Card.m */,
-				583A2AE317A333B500D526D3 /* Deck.h */,
-				583A2AE417A333B500D526D3 /* Deck.m */,
 				58E45DC117A325D40045B700 /* CardGameViewController.h */,
 				58E45DC217A325D40045B700 /* CardGameViewController.m */,
 				58E45DAD17A325D40045B700 /* Supporting Files */,
