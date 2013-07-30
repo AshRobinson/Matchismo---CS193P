@@ -10,14 +10,26 @@
 #import "Deck.h"
 
 @interface CardGameViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
+@property (nonatomic) int flipCount;
 
 @end
 
+
 @implementation CardGameViewController
 
-- (Deck *)createDeck
+- (void)setFlipCount:(int)flipCount
 {
-    return [[Deck alloc] init];
+    _flipCount = flipCount;
+    self.flipsLabel.text = [NSString stringWithFormat:@"Flips: %d", self.flipCount];
 }
+
+
+- (IBAction)flipCard:(UIButton *)sender
+{
+    sender.selected = !sender.isSelected;
+    self.flipCount++;
+}
+
 
 @end
