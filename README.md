@@ -1,4 +1,4 @@
-Matchismo-Assignment-1
+Matchismo-CS193P
 ======================
 
-Solution to Assignment 1 for Matchismo CS193p
+Solution to Assignment 1 & 2 for Matchismo CS193p
