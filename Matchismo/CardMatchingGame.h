@@ -8,17 +8,26 @@
 
 #import <Foundation/Foundation.h>
 #import "Deck.h"
+#import "Card.h"
 
 @interface CardMatchingGame : NSObject
 
-- (id)initWithCardCount:(NSUInteger)cardCount usingDeck:(Deck *)deck matchCount:(NSUInteger)matchCount;
-- (void)flipCardAtIndex:(NSUInteger)index;
-- (Card *)cardAtIndex:(NSUInteger)index;
-- (NSUInteger)messageCount;
-- (NSString *)messageAtIndex:(NSUInteger)index;
 
 @property (readonly, nonatomic) int score;
 @property (readonly, nonatomic) NSString *descriptionOfLastFlip;
-@property (nonatomic) NSUInteger matchCount;
+
+@property (nonatomic) int numberOfMatchingCards;
+
+@property (nonatomic) int matchBonus;
+@property (nonatomic) int mismatchPenalty;
+@property (nonatomic) int flipCost;
+
+// designated initializer
+- (id)initWithCardCount:(NSUInteger)count
+              usingDeck:(Deck *)deck;
+
+- (Card *)cardAtIndex:(NSUInteger)index;
+- (void)flipCardAtIndex:(NSUInteger)index;
+
 
 @end

@@ -8,179 +8,133 @@
 
 #import "CardMatchingGame.h"
 
-@interface CardMatchingGame ()
+@interface CardMatchingGame()
 
-@property (strong, nonatomic) NSMutableArray *cards;
-@property (nonatomic, readwrite) int score;
-@property (strong, nonatomic) NSMutableArray *messages;
+@property (readwrite, nonatomic) int score;
+@property (readwrite, nonatomic) NSString *descriptionOfLastFlip;
+
+@property (strong, nonatomic) NSMutableArray *cards; // of Card
 
 @end
 
-// Class implementation
 @implementation CardMatchingGame
-// Constants
-#define FLIP_COST 1
-#define MISMATCH_PENALTY 2
-#define MATCH_BONUS 4
-#define MAX_MESSAGES 50
-#define MIN_MATCH_COUNT 2
-#define MAX_MATCH_COUNT 3
 
-// Designated initializer
-- (id)initWithCardCount:(NSUInteger)cardCount usingDeck:(Deck *)deck matchCount:(NSUInteger)matchCount {
+@synthesize numberOfMatchingCards = _numberOfMatchingCards;
+
+- (NSMutableArray *)cards
+{
+    if (!_cards) {
+        _cards = [[NSMutableArray alloc] init];
+    }
+    return _cards;
+}
+
+- (int)numberOfMatchingCards
+{
+    if (!_numberOfMatchingCards) {
+        _numberOfMatchingCards = 2;
+    }
+    return _numberOfMatchingCards;
+}
+
+- (void)setNumberOfMatchingCards:(int)numberOfMatchingCards
+{
+    if (numberOfMatchingCards < 2) _numberOfMatchingCards = 2;
+    else if (numberOfMatchingCards > 3) _numberOfMatchingCards = 3;
+    else _numberOfMatchingCards = numberOfMatchingCards;
+}
+
+- (id)initWithCardCount:(NSUInteger)count
+              usingDeck:(Deck *)deck
+{
     self = [super init];
+    
     if (self) {
-        for (int i = 0; i < cardCount; i++) {
+        for (int i = 0; i < count; i++) {
             Card *card = [deck drawRandomCard];
-            if (!card) {
-                self = nil;
-            } else {
+            if (card) {
                 self.cards[i] = card;
+            } else {
+                self = nil;
+                break;
             }
         }
-        self.matchCount = matchCount;
+        _matchBonus = -1;
+        _mismatchPenalty = -1;
+        _flipCost = -1;
     }
     
     return self;
 }
 
-// Returns the collection of game cards.
-- (NSMutableArray *)cards {
-    if (!_cards) {
-        _cards = [[NSMutableArray alloc] init];
-    }
-    
-    return _cards;
+- (int)matchBonus
+{
+    if (_matchBonus < 0) _matchBonus = 4;
+    return _matchBonus;
 }
 
-// Returns the collection of play messages.
-- (NSMutableArray *)messages {
-    if (!_messages) {
-        _messages = [[NSMutableArray alloc] init];
-    }
-    
-    return _messages;
+- (int)mismatchPenalty
+{
+    if (_mismatchPenalty < 0) _mismatchPenalty = 2;
+    return _mismatchPenalty;
 }
 
-// Custom synthesis
-@synthesize matchCount  = _matchCount;
-
-// Returns the number of game card matches to use.
-- (NSUInteger)matchCount {
-    if (!_matchCount) {
-        _matchCount = MIN_MATCH_COUNT;
-    }
-    
-    return _matchCount;
+- (int)flipCost
+{
+    if (_flipCost < 0) _flipCost = 1;
+    return _flipCost;
 }
 
-// Sets the number of game card matches to use.
-- (void)setMatchCount:(NSUInteger)matchCount {
-    _matchCount = (matchCount < MIN_MATCH_COUNT) ? MIN_MATCH_COUNT : (matchCount > MAX_MATCH_COUNT) ? MAX_MATCH_COUNT : matchCount;
+- (Card *)cardAtIndex:(NSUInteger)index
+{
+    return (index < [self.cards count] ? self.cards[index] : nil);
 }
 
-// Flip a card, compute a score, and record a play message.
-- (void)flipCardAtIndex:(NSUInteger)index {
+- (void)flipCardAtIndex:(NSUInteger)index
+{
     Card *card = [self cardAtIndex:index];
-    if (!card.isUnplayable) {
+    
+    if (card && !card.isUnplayable) {
         if (!card.isFaceUp) {
-            // Collect the cards to match
-            NSMutableString *cardsString = nil;
-            NSMutableArray *cardsToMatch = nil;
+            NSMutableArray *otherCards = [[NSMutableArray alloc] init];
+            NSMutableArray *otherContents = [[NSMutableArray alloc] init];
             for (Card *otherCard in self.cards) {
                 if (otherCard.isFaceUp && !otherCard.isUnplayable) {
-                    // Include the card we're flipping in the collection of cards to match
-                    if (!cardsToMatch) {
-                        cardsToMatch = [[NSMutableArray alloc] init];
-                        [cardsToMatch addObject:card];
-                        cardsString = [NSMutableString stringWithFormat: @"%@", card.contents];
-                    }
-                    
-                    [cardsToMatch addObject:otherCard];
-                    [cardsString appendFormat:@" %@", otherCard.contents];
-                    
-                    // Stop collecting when we have the necessary number of cards to match
-                    if (cardsToMatch.count == self.matchCount) {
-                        break;
-                    }
+                    [otherCards addObject:otherCard];
+                    [otherContents addObject:otherCard.contents];
                 }
             }
-            
-            // Check whether we have all the necessary cards
-            NSString *message = nil;
-            if (cardsToMatch.count == self.matchCount) {
-                // Compute the total match score based on the cummulative score of matching pairs
-                int matchScore = 0;
-                for (int i = 0; i < cardsToMatch.count; i++) {
-                    NSRange range;
-                    range.location = i + 1;
-                    range.length = cardsToMatch.count - (i + 1);
-                    matchScore += [[cardsToMatch objectAtIndex:i] match:[cardsToMatch subarrayWithRange:range]];
-                }
-                
-                // Check whether there were any matches
+            if ([otherCards count] < self.numberOfMatchingCards - 1) {
+                self.descriptionOfLastFlip = [NSString stringWithFormat:@"Flipped up %@", card.contents];
+            } else {
+                int matchScore = [card match:otherCards];
                 if (matchScore) {
-                    // Cards can only be used once if they are part of a group with at least a partial match
-                    for (Card *otherCard in cardsToMatch) {
+                    card.unplayable = YES;
+                    for (Card *otherCard in otherCards) {
                         otherCard.unplayable = YES;
+                        
                     }
-                    
-                    // Compute the match points and add them to the current score
-                    int points = matchScore * MATCH_BONUS;
-                    self.score += points;
-                    
-                    message = [NSString stringWithFormat:@"Match found in %@ (+%d pts)", cardsString, points];
-                    
+                    self.score += matchScore * self.matchBonus;
+                    self.descriptionOfLastFlip =
+                    [NSString stringWithFormat:@"Matched %@ & %@ for %d points",
+                     card.contents,
+                     [otherContents componentsJoinedByString:@" & "],
+                     matchScore * self.matchBonus];
                 } else {
-                    // Turn down all cards if there were no matches
-                    for (Card *otherCard in cardsToMatch) {
+                    for (Card *otherCard in otherCards) {
                         otherCard.faceUp = NO;
                     }
-                    
-                    // Update the current score with the necessary penalty
-                    self.score -= MISMATCH_PENALTY;
-                    
-                    message = [NSString stringWithFormat:@"No match found in %@ (-%d pts)", cardsString, MISMATCH_PENALTY];
+                    self.score -= self.mismatchPenalty;
+                    self.descriptionOfLastFlip =
+                    [NSString stringWithFormat:@"%@ & %@ don’t match! %d point penalty!",
+                     card.contents,
+                     [otherContents componentsJoinedByString:@" & "],
+                     self.mismatchPenalty];
                 }
             }
-            
-            // Update the current score with the cost of flipping the card too
-            self.score -= FLIP_COST;
-            
-            // Record a play message
-            if (!message) {
-                message = [NSString stringWithFormat:@"Flipped up %@", card.contents];
-            }
-            [self addMessage: message];
+            self.score -= self.flipCost;
         }
-        
-        // Flip the card
-        card.faceUp = !card.isFaceUp;
-    }
-}
-
-// Returns a specific game card.
-- (Card *)cardAtIndex:(NSUInteger)index {
-    return (index < self.cards.count) ? self.cards[index] : nil;
-}
-
-// Returns the number of recorded play messages.
-- (NSUInteger)messageCount {
-    return self.messages.count;
-}
-
-// Returns a specific play message.
-- (NSString *)messageAtIndex:(NSUInteger)index {
-    return (index < self.messages.count) ? self.messages[index] : @"";
-}
-
-// Adds a message to the collection of play messages.
-- (void)addMessage:(NSString *)message {
-    if (message) {
-        if (self.messages.count == MAX_MESSAGES) {
-            [self.messages removeLastObject];
-        }
-        [self.messages insertObject:message atIndex:0];
+        card.faceUp = !card.faceUp;
     }
 }
 
