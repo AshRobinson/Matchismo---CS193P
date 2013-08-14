@@ -8,6 +8,31 @@
 
 /* Begin PBXBuildFile section */
 		583A2AE517A333B500D526D3 /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = 583A2AE417A333B500D526D3 /* Deck.m */; };
+		587CBB7117BC170C00E19023 /* PlayingCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 587CBB7017BC170C00E19023 /* PlayingCardView.m */; };
+		587CBB8B17BC17A500E19023 /* J♠.png in Resources */ = {isa = PBXBuildFile; fileRef = 587CBB7317BC17A500E19023 /* J♠.png */; };
+		587CBB8C17BC17A500E19023 /* J♠@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 587CBB7417BC17A500E19023 /* J♠@2x.png */; };
+		587CBB8D17BC17A500E19023 /* J♣.png in Resources */ = {isa = PBXBuildFile; fileRef = 587CBB7517BC17A500E19023 /* J♣.png */; };
+		587CBB8E17BC17A500E19023 /* J♣@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 587CBB7617BC17A500E19023 /* J♣@2x.png */; };
+		587CBB8F17BC17A500E19023 /* J♥.png in Resources */ = {isa = PBXBuildFile; fileRef = 587CBB7717BC17A500E19023 /* J♥.png */; };
+		587CBB9017BC17A500E19023 /* J♥@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 587CBB7817BC17A500E19023 /* J♥@2x.png */; };
+		587CBB9117BC17A500E19023 /* J♦.png in Resources */ = {isa = PBXBuildFile; fileRef = 587CBB7917BC17A500E19023 /* J♦.png */; };
+		587CBB9217BC17A500E19023 /* J♦@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 587CBB7A17BC17A500E19023 /* J♦@2x.png */; };
+		587CBB9317BC17A500E19023 /* K♠.png in Resources */ = {isa = PBXBuildFile; fileRef = 587CBB7B17BC17A500E19023 /* K♠.png */; };
+		587CBB9417BC17A500E19023 /* K♠@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 587CBB7C17BC17A500E19023 /* K♠@2x.png */; };
+		587CBB9517BC17A500E19023 /* K♣.png in Resources */ = {isa = PBXBuildFile; fileRef = 587CBB7D17BC17A500E19023 /* K♣.png */; };
+		587CBB9617BC17A500E19023 /* K♣@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 587CBB7E17BC17A500E19023 /* K♣@2x.png */; };
+		587CBB9717BC17A500E19023 /* K♥.png in Resources */ = {isa = PBXBuildFile; fileRef = 587CBB7F17BC17A500E19023 /* K♥.png */; };
+		587CBB9817BC17A500E19023 /* K♥@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 587CBB8017BC17A500E19023 /* K♥@2x.png */; };
+		587CBB9917BC17A500E19023 /* K♦.png in Resources */ = {isa = PBXBuildFile; fileRef = 587CBB8117BC17A500E19023 /* K♦.png */; };
+		587CBB9A17BC17A500E19023 /* K♦@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 587CBB8217BC17A500E19023 /* K♦@2x.png */; };
+		587CBB9B17BC17A500E19023 /* Q♠.png in Resources */ = {isa = PBXBuildFile; fileRef = 587CBB8317BC17A500E19023 /* Q♠.png */; };
+		587CBB9C17BC17A500E19023 /* Q♠@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 587CBB8417BC17A500E19023 /* Q♠@2x.png */; };
+		587CBB9D17BC17A500E19023 /* Q♣.png in Resources */ = {isa = PBXBuildFile; fileRef = 587CBB8517BC17A500E19023 /* Q♣.png */; };
+		587CBB9E17BC17A500E19023 /* Q♣@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 587CBB8617BC17A500E19023 /* Q♣@2x.png */; };
+		587CBB9F17BC17A500E19023 /* Q♥.png in Resources */ = {isa = PBXBuildFile; fileRef = 587CBB8717BC17A500E19023 /* Q♥.png */; };
+		587CBBA017BC17A500E19023 /* Q♥@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 587CBB8817BC17A500E19023 /* Q♥@2x.png */; };
+		587CBBA117BC17A500E19023 /* Q♦.png in Resources */ = {isa = PBXBuildFile; fileRef = 587CBB8917BC17A500E19023 /* Q♦.png */; };
+		587CBBA217BC17A500E19023 /* Q♦@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 587CBB8A17BC17A500E19023 /* Q♦@2x.png */; };
 		58A3C2D817A449F5007345CE /* PlayingCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A3C2D717A449F5007345CE /* PlayingCard.m */; };
 		58A3C2DB17A44A15007345CE /* PlayingCardDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A3C2DA17A44A15007345CE /* PlayingCardDeck.m */; };
 		58A3C2DE17A854DD007345CE /* CardMatchingGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A3C2DD17A854DD007345CE /* CardMatchingGame.m */; };
@@ -44,6 +69,32 @@
 /* Begin PBXFileReference section */
 		583A2AE317A333B500D526D3 /* Deck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Deck.h; sourceTree = "<group>"; };
 		583A2AE417A333B500D526D3 /* Deck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Deck.m; sourceTree = "<group>"; };
+		587CBB6F17BC170C00E19023 /* PlayingCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingCardView.h; sourceTree = "<group>"; };
+		587CBB7017BC170C00E19023 /* PlayingCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCardView.m; sourceTree = "<group>"; };
+		587CBB7317BC17A500E19023 /* J♠.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "J♠.png"; sourceTree = "<group>"; };
+		587CBB7417BC17A500E19023 /* J♠@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "J♠@2x.png"; sourceTree = "<group>"; };
+		587CBB7517BC17A500E19023 /* J♣.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "J♣.png"; sourceTree = "<group>"; };
+		587CBB7617BC17A500E19023 /* J♣@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "J♣@2x.png"; sourceTree = "<group>"; };
+		587CBB7717BC17A500E19023 /* J♥.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "J♥.png"; sourceTree = "<group>"; };
+		587CBB7817BC17A500E19023 /* J♥@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "J♥@2x.png"; sourceTree = "<group>"; };
+		587CBB7917BC17A500E19023 /* J♦.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "J♦.png"; sourceTree = "<group>"; };
+		587CBB7A17BC17A500E19023 /* J♦@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "J♦@2x.png"; sourceTree = "<group>"; };
+		587CBB7B17BC17A500E19023 /* K♠.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "K♠.png"; sourceTree = "<group>"; };
+		587CBB7C17BC17A500E19023 /* K♠@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "K♠@2x.png"; sourceTree = "<group>"; };
+		587CBB7D17BC17A500E19023 /* K♣.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "K♣.png"; sourceTree = "<group>"; };
+		587CBB7E17BC17A500E19023 /* K♣@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "K♣@2x.png"; sourceTree = "<group>"; };
+		587CBB7F17BC17A500E19023 /* K♥.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "K♥.png"; sourceTree = "<group>"; };
+		587CBB8017BC17A500E19023 /* K♥@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "K♥@2x.png"; sourceTree = "<group>"; };
+		587CBB8117BC17A500E19023 /* K♦.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "K♦.png"; sourceTree = "<group>"; };
+		587CBB8217BC17A500E19023 /* K♦@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "K♦@2x.png"; sourceTree = "<group>"; };
+		587CBB8317BC17A500E19023 /* Q♠.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Q♠.png"; sourceTree = "<group>"; };
+		587CBB8417BC17A500E19023 /* Q♠@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Q♠@2x.png"; sourceTree = "<group>"; };
+		587CBB8517BC17A500E19023 /* Q♣.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Q♣.png"; sourceTree = "<group>"; };
+		587CBB8617BC17A500E19023 /* Q♣@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Q♣@2x.png"; sourceTree = "<group>"; };
+		587CBB8717BC17A500E19023 /* Q♥.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Q♥.png"; sourceTree = "<group>"; };
+		587CBB8817BC17A500E19023 /* Q♥@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Q♥@2x.png"; sourceTree = "<group>"; };
+		587CBB8917BC17A500E19023 /* Q♦.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Q♦.png"; sourceTree = "<group>"; };
+		587CBB8A17BC17A500E19023 /* Q♦@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Q♦@2x.png"; sourceTree = "<group>"; };
 		58A3C2D617A449F5007345CE /* PlayingCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingCard.h; sourceTree = "<group>"; };
 		58A3C2D717A449F5007345CE /* PlayingCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCard.m; sourceTree = "<group>"; };
 		58A3C2D917A44A15007345CE /* PlayingCardDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingCardDeck.h; sourceTree = "<group>"; };
@@ -131,6 +182,37 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		587CBB7217BC17A500E19023 /* PlayingCardFaces */ = {
+			isa = PBXGroup;
+			children = (
+				587CBB7317BC17A500E19023 /* J♠.png */,
+				587CBB7417BC17A500E19023 /* J♠@2x.png */,
+				587CBB7517BC17A500E19023 /* J♣.png */,
+				587CBB7617BC17A500E19023 /* J♣@2x.png */,
+				587CBB7717BC17A500E19023 /* J♥.png */,
+				587CBB7817BC17A500E19023 /* J♥@2x.png */,
+				587CBB7917BC17A500E19023 /* J♦.png */,
+				587CBB7A17BC17A500E19023 /* J♦@2x.png */,
+				587CBB7B17BC17A500E19023 /* K♠.png */,
+				587CBB7C17BC17A500E19023 /* K♠@2x.png */,
+				587CBB7D17BC17A500E19023 /* K♣.png */,
+				587CBB7E17BC17A500E19023 /* K♣@2x.png */,
+				587CBB7F17BC17A500E19023 /* K♥.png */,
+				587CBB8017BC17A500E19023 /* K♥@2x.png */,
+				587CBB8117BC17A500E19023 /* K♦.png */,
+				587CBB8217BC17A500E19023 /* K♦@2x.png */,
+				587CBB8317BC17A500E19023 /* Q♠.png */,
+				587CBB8417BC17A500E19023 /* Q♠@2x.png */,
+				587CBB8517BC17A500E19023 /* Q♣.png */,
+				587CBB8617BC17A500E19023 /* Q♣@2x.png */,
+				587CBB8717BC17A500E19023 /* Q♥.png */,
+				587CBB8817BC17A500E19023 /* Q♥@2x.png */,
+				587CBB8917BC17A500E19023 /* Q♦.png */,
+				587CBB8A17BC17A500E19023 /* Q♦@2x.png */,
+			);
+			path = PlayingCardFaces;
+			sourceTree = "<group>";
+		};
 		58E45D9A17A325D40045B700 = {
 			isa = PBXGroup;
 			children = (
@@ -175,6 +257,8 @@
 				58AB056517B2DF9000F3E34B /* SettingsViewController.h */,
 				58AB056617B2DF9000F3E34B /* SettingsViewController.m */,
 				58E45DBE17A325D40045B700 /* MainStoryboard.storyboard */,
+				587CBB6F17BC170C00E19023 /* PlayingCardView.h */,
+				587CBB7017BC170C00E19023 /* PlayingCardView.m */,
 				58E45DAD17A325D40045B700 /* Supporting Files */,
 			);
 			path = Matchismo;
@@ -183,6 +267,7 @@
 		58E45DAD17A325D40045B700 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				587CBB7217BC17A500E19023 /* PlayingCardFaces */,
 				58C8EACF17B030DC00F6F4E7 /* race-flag.png */,
 				58C8EACD17B030D100F6F4E7 /* gear.png */,
 				58C8EAC917AEEEA500F6F4E7 /* layer.png */,
@@ -269,6 +354,30 @@
 				58C8EACA17AEEEA500F6F4E7 /* layer.png in Resources */,
 				58C8EACE17B030D100F6F4E7 /* gear.png in Resources */,
 				58C8EAD017B030DC00F6F4E7 /* race-flag.png in Resources */,
+				587CBB8B17BC17A500E19023 /* J♠.png in Resources */,
+				587CBB8C17BC17A500E19023 /* J♠@2x.png in Resources */,
+				587CBB8D17BC17A500E19023 /* J♣.png in Resources */,
+				587CBB8E17BC17A500E19023 /* J♣@2x.png in Resources */,
+				587CBB8F17BC17A500E19023 /* J♥.png in Resources */,
+				587CBB9017BC17A500E19023 /* J♥@2x.png in Resources */,
+				587CBB9117BC17A500E19023 /* J♦.png in Resources */,
+				587CBB9217BC17A500E19023 /* J♦@2x.png in Resources */,
+				587CBB9317BC17A500E19023 /* K♠.png in Resources */,
+				587CBB9417BC17A500E19023 /* K♠@2x.png in Resources */,
+				587CBB9517BC17A500E19023 /* K♣.png in Resources */,
+				587CBB9617BC17A500E19023 /* K♣@2x.png in Resources */,
+				587CBB9717BC17A500E19023 /* K♥.png in Resources */,
+				587CBB9817BC17A500E19023 /* K♥@2x.png in Resources */,
+				587CBB9917BC17A500E19023 /* K♦.png in Resources */,
+				587CBB9A17BC17A500E19023 /* K♦@2x.png in Resources */,
+				587CBB9B17BC17A500E19023 /* Q♠.png in Resources */,
+				587CBB9C17BC17A500E19023 /* Q♠@2x.png in Resources */,
+				587CBB9D17BC17A500E19023 /* Q♣.png in Resources */,
+				587CBB9E17BC17A500E19023 /* Q♣@2x.png in Resources */,
+				587CBB9F17BC17A500E19023 /* Q♥.png in Resources */,
+				587CBBA017BC17A500E19023 /* Q♥@2x.png in Resources */,
+				587CBBA117BC17A500E19023 /* Q♦.png in Resources */,
+				587CBBA217BC17A500E19023 /* Q♦@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +404,7 @@
 				58AB056417B03C9800F3E34B /* GameResult.m in Sources */,
 				58AB056717B2DF9000F3E34B /* SettingsViewController.m in Sources */,
 				58AB056A17B2E0E500F3E34B /* GameSettings.m in Sources */,
+				587CBB7117BC170C00E19023 /* PlayingCardView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
