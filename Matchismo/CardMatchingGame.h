@@ -22,6 +22,8 @@
 @property (nonatomic) int mismatchPenalty;
 @property (nonatomic) int flipCost;
 
+@property (nonatomic) int numberOfCards;
+
 // designated initializer
 - (id)initWithCardCount:(NSUInteger)count
               usingDeck:(Deck *)deck;

@@ -9,11 +9,33 @@
 #import "GameViewController.h"
 #import "GameResult.h"
 
-@interface GameViewController ()
+@interface GameViewController () <UICollectionViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UICollectionView *cardCollectionView;
 
 @end
 
 @implementation GameViewController
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return self.game.numberOfCards;
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PlayingCard" forIndexPath:indexPath];
+    
+    Card *card = [self.game cardAtIndex:indexPath.item];
+    [self updateCell:cell usingCard:card];
+    return cell;
+}
+
+-(void)updateCell:(UICollectionViewCell *)cell usingCard:(Card *)Card
+{
+   //to be impletemented by subclass
+}
+
 
 - (void)setFlipCount:(int)flipCount
 {
@@ -21,11 +43,6 @@
     self.flipsLabel.text = [NSString stringWithFormat:@"Flips: %d", flipCount];
 }
 
-- (void)setCardButtons:(NSArray *)cardButtons
-{
-    _cardButtons = cardButtons;
-    [self updateUI];
-}
 
 - (NSMutableArray *)history {
     if (!_history) {
@@ -71,7 +88,8 @@
 - (IBAction)flipCard:(UIButton *)sender
 {
     self.cardModeSelector.enabled = NO;
-    [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
+    int index = 0; //??
+    [self.game flipCardAtIndex:index];
     self.flipCount++;
     
     if (![[self.history lastObject] isEqualToString:self.game.descriptionOfLastFlip])

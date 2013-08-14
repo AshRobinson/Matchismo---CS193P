@@ -29,6 +29,11 @@
     return _cards;
 }
 
+-(int)numberOfCards
+{
+    return [self.cards count];
+}
+
 - (int)numberOfMatchingCards
 {
     if (!_numberOfMatchingCards) {

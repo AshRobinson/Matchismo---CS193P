@@ -19,8 +19,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
-
 @property (weak, nonatomic) IBOutlet UISlider *historySlider;
 @property (strong, nonatomic) NSMutableArray *history;
 
@@ -39,5 +37,7 @@
 - (IBAction)cardModeChanged:(UISegmentedControl *)sender;
 - (IBAction)historySliderChanged:(UISlider *)sender;
 - (void)updateSliderRange;
+
+-(void)updateCell:(UICollectionViewCell *)cell usingCard:(Card *)Card;
 
 @end

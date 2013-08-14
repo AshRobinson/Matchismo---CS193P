@@ -17,13 +17,15 @@
 
 @implementation SetCardGameViewController
 
+/*
+
 @synthesize game = _game;
 @synthesize gameResult = _gameResult;
 
 - (CardMatchingGame *)game
 {
     if (!_game) {
-        _game = [[CardMatchingGame alloc] initWithCardCount:[self.cardButtons count]
+        _game = [[CardMatchingGame alloc] initWithCardCount:[self.startingCardCount]
                                                   usingDeck:[[SetCardDeck alloc] init]];
         _game.numberOfMatchingCards = 3;
         _game.matchBonus = self.gameSettings.matchBonus;
@@ -107,5 +109,7 @@
     
     self.resultOfLastFlipLabel.attributedText = lastFlip;
 }
+
+*/
 
 @end
