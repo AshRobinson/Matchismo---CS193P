@@ -68,14 +68,6 @@
     return _gameSettings;
 }
 
-- (void)updateUI
-{
-    self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
-    self.resultOfLastFlipLabel.alpha = 1;
-    self.resultOfLastFlipLabel.text = self.game.descriptionOfLastFlip;
-    
-    [self updateSliderRange];
-}
 
 - (void)updateSliderRange
 {
@@ -85,20 +77,39 @@
     [self.historySlider setValue:maxValue animated:YES];
 }
 
-- (IBAction)flipCard:(UIButton *)sender
+
+- (IBAction)flipCard:(UITapGestureRecognizer *)gesture
 {
-    self.cardModeSelector.enabled = NO;
-    int index = 0; //??
-    [self.game flipCardAtIndex:index];
-    self.flipCount++;
+    CGPoint tapLocation = [gesture locationInView:self.cardCollectionView];
+    NSIndexPath *indexPath = [self.cardCollectionView indexPathForItemAtPoint:tapLocation];
     
-    if (![[self.history lastObject] isEqualToString:self.game.descriptionOfLastFlip])
-        [self.history addObject:self.game.descriptionOfLastFlip];
-    
-    self.gameResult.score = self.game.score;
-    
-    [self updateUI];
+    if(indexPath){
+        self.cardModeSelector.enabled = NO;
+        [self.game flipCardAtIndex:indexPath.item];
+        self.flipCount++;
+        
+        if (![[self.history lastObject] isEqualToString:self.game.descriptionOfLastFlip])
+            [self.history addObject:self.game.descriptionOfLastFlip];
+        self.gameResult.score = self.game.score;
+        [self updateUI];
+    }
 }
+
+- (void)updateUI
+{
+    for (UICollectionViewCell *cell in [self.cardCollectionView visibleCells]){
+        NSIndexPath *indexPath = [self.cardCollectionView indexPathForCell:cell];
+        Card *card = [self.game cardAtIndex:indexPath.item];
+        [self updateCell:cell usingCard:card];
+    }
+    
+    self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
+    self.resultOfLastFlipLabel.alpha = 1;
+    self.resultOfLastFlipLabel.text = self.game.descriptionOfLastFlip;
+    
+    [self updateSliderRange];
+}
+
 
 - (IBAction)dealButtonPressed:(UIButton *)sender {
     self.game = nil;
