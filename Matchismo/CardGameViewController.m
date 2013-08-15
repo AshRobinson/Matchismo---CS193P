@@ -34,16 +34,22 @@
     return _game;
 }
 
--(void)updateCell:(UICollectionViewCell *)cell usingCard:(Card *)card
+-(void)updateCell:(UICollectionViewCell *)cell usingCard:(Card *)card animated:(BOOL)animated
 {
     if ([cell isKindOfClass:[PlayingCardCollectionViewCell class]]) {
         PlayingCardView *playingCardView = ((PlayingCardCollectionViewCell *)cell).playingCardView;
         if ([card isKindOfClass:[PlayingCard class]]) {
-            PlayingCard *playingCard = (PlayingCard *)card;
-            playingCardView.suit = playingCard.suit;
-            playingCardView.rank = playingCard.rank;
-            playingCardView.faceUp = playingCard.isFaceUp;
-            playingCardView.alpha = playingCard.isUnplayable ? 0.3 : 1.0;
+                [UIView transitionWithView:playingCardView
+                                  duration:0.3
+                                   options:(animated) ? UIViewAnimationOptionTransitionFlipFromLeft : UIViewAnimationOptionTransitionNone
+                                animations:^{
+                                    PlayingCard *playingCard = (PlayingCard *)card;
+                                    playingCardView.suit = playingCard.suit;
+                                    playingCardView.rank = playingCard.rank;
+                                    playingCardView.faceUp = playingCard.isFaceUp;
+                                    playingCardView.alpha = playingCard.isUnplayable ? 0.3 : 1.0;
+                                }
+                                completion:NULL];
         }
     }
 }

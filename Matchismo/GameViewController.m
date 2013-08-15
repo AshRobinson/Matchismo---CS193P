@@ -27,11 +27,11 @@
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PlayingCard" forIndexPath:indexPath];
     
     Card *card = [self.game cardAtIndex:indexPath.item];
-    [self updateCell:cell usingCard:card];
+    [self updateCell:cell usingCard:card animated:NO];
     return cell;
 }
 
--(void)updateCell:(UICollectionViewCell *)cell usingCard:(Card *)Card
+-(void)updateCell:(UICollectionViewCell *)cell usingCard:(Card *)Card animated:(BOOL)animated
 {
    //to be impletemented by subclass
 }
@@ -91,16 +91,21 @@
         if (![[self.history lastObject] isEqualToString:self.game.descriptionOfLastFlip])
             [self.history addObject:self.game.descriptionOfLastFlip];
         self.gameResult.score = self.game.score;
-        [self updateUI];
+        [self updateUI:indexPath.item];
     }
 }
 
-- (void)updateUI
+-(void)updateUI
+{
+    [self updateUI:-1];
+}
+
+- (void)updateUI:(NSUInteger)flippedCardIndex
 {
     for (UICollectionViewCell *cell in [self.cardCollectionView visibleCells]){
         NSIndexPath *indexPath = [self.cardCollectionView indexPathForCell:cell];
         Card *card = [self.game cardAtIndex:indexPath.item];
-        [self updateCell:cell usingCard:card];
+        [self updateCell:cell usingCard:card animated:(indexPath.item == flippedCardIndex && !card.isUnplayable)];
     }
     
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];

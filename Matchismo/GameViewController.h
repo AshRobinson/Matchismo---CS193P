@@ -38,6 +38,6 @@
 - (IBAction)historySliderChanged:(UISlider *)sender;
 - (void)updateSliderRange;
 
--(void)updateCell:(UICollectionViewCell *)cell usingCard:(Card *)Card;
+-(void)updateCell:(UICollectionViewCell *)cell usingCard:(Card *)Card animated:(BOOL)animated;
 
 @end
