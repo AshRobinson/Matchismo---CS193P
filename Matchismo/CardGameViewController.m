@@ -58,7 +58,7 @@
 -(NSUInteger)startingCardCount
 {
     if (!_startingCardCount){
-        _startingCardCount = 21;
+        _startingCardCount = 20;
     }
     return _startingCardCount;
 }
