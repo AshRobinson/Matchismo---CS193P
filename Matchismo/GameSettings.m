@@ -14,6 +14,7 @@
 #define MATCHBONUS_KEY @"MatchBonus_Key"
 #define MISMATCHPENALTY_KEY @"MismatchPenalty_Key"
 #define FLIPCOST_KEY @"FlipCost_Key"
+#define NUMBER_OF_CARDS_KEY @"NumberOfCards_Key"
 
 - (int)getIntForKey:(NSString *)key withDefaultInt:(int)defaultValue
 {
@@ -21,6 +22,11 @@
     if (!settings) return defaultValue;
     if (![[settings allKeys] containsObject:key]) return defaultValue;
     return [settings[key] intValue];
+}
+
+-(int)numberOfPlayingCards
+{
+    return [self getIntForKey:NUMBER_OF_CARDS_KEY withDefaultInt:12];
 }
 
 - (int)matchBonus
@@ -48,6 +54,13 @@
     [[NSUserDefaults standardUserDefaults] setObject:settings
                                               forKey:GAME_SETTINGS_KEY];
     [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+-(void)setNumberOfPlayingCards:(int)numberOfPlayingCards
+{
+    if (numberOfPlayingCards != self.numberOfPlayingCards){
+        [self setInt:numberOfPlayingCards forKey:NUMBER_OF_CARDS_KEY];
+    }
 }
 
 - (void)setMatchBonus:(int)matchBonus

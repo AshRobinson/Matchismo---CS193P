@@ -14,5 +14,7 @@
 @property (nonatomic) int mismatchPenalty;
 @property (nonatomic) int flipCost;
 
+@property (nonatomic) int numberOfPlayingCards;
+
 
 @end

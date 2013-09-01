@@ -17,6 +17,8 @@
 
 @property (strong, nonatomic) CardMatchingGame *game;
 
+@property (strong, nonatomic) GameSettings *gameSettings;
+
 - (void)updateUI;
 
 @property (nonatomic) BOOL removeUnplayableCards;
@@ -29,6 +31,7 @@
 @property (strong, nonatomic) NSString *gameType;
 
 - (void)updateCell:(UICollectionViewCell *)cell
-         usingCard:(Card *)card;
+         usingCard:(Card *)card
+       atIndexPath:(NSIndexPath *)indexPath;
 
 @end

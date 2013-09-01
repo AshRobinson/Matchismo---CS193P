@@ -55,6 +55,7 @@
 		58C8EACA17AEEEA500F6F4E7 /* layer.png in Resources */ = {isa = PBXBuildFile; fileRef = 58C8EAC917AEEEA500F6F4E7 /* layer.png */; };
 		58C8EACE17B030D100F6F4E7 /* gear.png in Resources */ = {isa = PBXBuildFile; fileRef = 58C8EACD17B030D100F6F4E7 /* gear.png */; };
 		58C8EAD017B030DC00F6F4E7 /* race-flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 58C8EACF17B030DC00F6F4E7 /* race-flag.png */; };
+		58D3838817D3695600AA25B8 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 58D3838717D3695600AA25B8 /* star.png */; };
 		58E45DA717A325D40045B700 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E45DA617A325D40045B700 /* UIKit.framework */; };
 		58E45DA917A325D40045B700 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E45DA817A325D40045B700 /* Foundation.framework */; };
 		58E45DAB17A325D40045B700 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E45DAA17A325D40045B700 /* CoreGraphics.framework */; };
@@ -134,6 +135,7 @@
 		58C8EAC917AEEEA500F6F4E7 /* layer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = layer.png; sourceTree = "<group>"; };
 		58C8EACD17B030D100F6F4E7 /* gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gear.png; sourceTree = "<group>"; };
 		58C8EACF17B030DC00F6F4E7 /* race-flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "race-flag.png"; sourceTree = "<group>"; };
+		58D3838717D3695600AA25B8 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
 		58E45DA317A325D40045B700 /* Matchismo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Matchismo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58E45DA617A325D40045B700 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		58E45DA817A325D40045B700 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -287,6 +289,7 @@
 				58C8EACD17B030D100F6F4E7 /* gear.png */,
 				58C8EAC917AEEEA500F6F4E7 /* layer.png */,
 				58C8EAC717AEEE9B00F6F4E7 /* poker.png */,
+				58D3838717D3695600AA25B8 /* star.png */,
 				58A3C2EF17AC3615007345CE /* mainBackground.jpg */,
 				58C8EAB617AEEC6500F6F4E7 /* setWallpaper.jpg */,
 				58A3C2E917AAF9B1007345CE /* cardback2.png */,
@@ -393,6 +396,7 @@
 				587CBBA017BC17A500E19023 /* Q♥@2x.png in Resources */,
 				587CBBA117BC17A500E19023 /* Q♦.png in Resources */,
 				587CBBA217BC17A500E19023 /* Q♦@2x.png in Resources */,
+				58D3838817D3695600AA25B8 /* star.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet UISlider *matchBonusSlider;
 @property (weak, nonatomic) IBOutlet UISlider *mismatchPenaltySlider;
 @property (weak, nonatomic) IBOutlet UISlider *flipCostSlider;
+@property (weak, nonatomic) IBOutlet UISlider *numberOfCardsSlider;
+@property (weak, nonatomic) IBOutlet UILabel *numberOfCardsLabel;
 
 @property (strong, nonatomic) GameSettings *gameSettings;
 
@@ -37,6 +39,12 @@
     [slider setValue:sliderValue animated:NO];
     
     label.text = [NSString stringWithFormat:@"%d", sliderValue];
+}
+
+- (IBAction)numberOfCardsSliderChaged:(UISlider *)sender
+{
+    [self setLabel:self.numberOfCardsLabel forSlider:sender];
+    self.gameSettings.numberOfPlayingCards = floor(sender.value);
 }
 
 - (IBAction)matchBonusSliderChanged:(UISlider *)sender
@@ -63,9 +71,11 @@
     self.matchBonusSlider.value = self.gameSettings.matchBonus;
     self.mismatchPenaltySlider.value = self.gameSettings.mismatchPenalty;
     self.flipCostSlider.value = self.gameSettings.flipCost;
+    self.numberOfCardsSlider.value = self.gameSettings.numberOfPlayingCards;
     [self setLabel:self.matchBonusLabel forSlider:self.matchBonusSlider];
     [self setLabel:self.mismatchPenaltyLabel forSlider:self.mismatchPenaltySlider];
     [self setLabel:self.flipCostLabel forSlider:self.flipCostSlider];
+    [self setLabel:self.numberOfCardsLabel forSlider:self.numberOfCardsSlider];
 }
 
 @end
