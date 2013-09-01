@@ -13,31 +13,22 @@
 
 @interface GameViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
-@property (nonatomic) int flipCount;
 @property (weak, nonatomic) IBOutlet UILabel *resultOfLastFlipLabel;
-
-@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
-
-@property (weak, nonatomic) IBOutlet UISlider *historySlider;
-@property (strong, nonatomic) NSMutableArray *history;
-
-@property (weak, nonatomic) IBOutlet UISegmentedControl *cardModeSelector;
 
 @property (strong, nonatomic) CardMatchingGame *game;
 
-@property (strong, nonatomic) GameResult *gameResult;
-
-@property (strong, nonatomic) GameSettings *gameSettings;
-
 - (void)updateUI;
 
-- (IBAction)flipCard:(UIButton *)sender;
-- (IBAction)dealButtonPressed:(UIButton *)sender;
-- (IBAction)cardModeChanged:(UISegmentedControl *)sender;
-- (IBAction)historySliderChanged:(UISlider *)sender;
-- (void)updateSliderRange;
+@property (nonatomic) BOOL removeUnplayableCards;
 
--(void)updateCell:(UICollectionViewCell *)cell usingCard:(Card *)Card animated:(BOOL)animated;
+// abstract
+- (Deck *)createDeck;
+
+@property (nonatomic) NSUInteger startingCardCount;
+@property (nonatomic) NSUInteger numberOfMatchingCards;
+@property (strong, nonatomic) NSString *gameType;
+
+- (void)updateCell:(UICollectionViewCell *)cell
+         usingCard:(Card *)card;
 
 @end

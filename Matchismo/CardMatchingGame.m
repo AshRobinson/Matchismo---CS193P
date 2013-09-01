@@ -7,6 +7,7 @@
 //
 
 #import "CardMatchingGame.h"
+#import "PlayingCardDeck.h"
 
 @interface CardMatchingGame()
 
@@ -14,6 +15,7 @@
 @property (readwrite, nonatomic) NSString *descriptionOfLastFlip;
 
 @property (strong, nonatomic) NSMutableArray *cards; // of Card
+@property (strong, nonatomic) Deck *deck;
 
 @end
 
@@ -29,7 +31,7 @@
     return _cards;
 }
 
--(int)numberOfCards
+- (int)numberOfCards
 {
     return [self.cards count];
 }
@@ -49,12 +51,19 @@
     else _numberOfMatchingCards = numberOfMatchingCards;
 }
 
+- (BOOL)deckIsEmpty
+{
+    if (self.deck.numberOfCardsInDeck) return NO;
+    return YES;
+}
+
 - (id)initWithCardCount:(NSUInteger)count
               usingDeck:(Deck *)deck
 {
     self = [super init];
     
     if (self) {
+        _deck = deck;
         for (int i = 0; i < count; i++) {
             Card *card = [deck drawRandomCard];
             if (card) {
@@ -117,7 +126,6 @@
                     card.unplayable = YES;
                     for (Card *otherCard in otherCards) {
                         otherCard.unplayable = YES;
-                        
                     }
                     self.score += matchScore * self.matchBonus;
                     self.descriptionOfLastFlip =
@@ -142,5 +150,19 @@
         card.faceUp = !card.faceUp;
     }
 }
+
+- (void)removeCardAtIndex:(NSUInteger)index
+{
+    [self.cards removeObjectAtIndex:index];
+}
+
+- (void)drawNewCard
+{
+    Card *card = [self.deck drawRandomCard];
+    if (card) {
+        [self.cards addObject:card];
+    }
+}
+
 
 @end

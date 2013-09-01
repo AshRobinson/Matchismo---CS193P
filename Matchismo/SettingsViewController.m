@@ -45,7 +45,7 @@
     self.gameSettings.matchBonus = floor(sender.value);
 }
 
-- (IBAction)mismatchSliderChanged:(UISlider *)sender
+- (IBAction)mismatchPenaltySliderChanged:(UISlider *)sender
 {
     [self setLabel:self.mismatchPenaltyLabel forSlider:sender];
     self.gameSettings.mismatchPenalty = floor(sender.value);

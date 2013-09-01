@@ -11,6 +11,4 @@
 
 @interface CardGameViewController : GameViewController
 
-@property (nonatomic) NSUInteger startingCardCount;
-
 @end

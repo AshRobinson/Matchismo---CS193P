@@ -9,7 +9,8 @@
 #import "SetCardGameViewController.h"
 #import "SetCardDeck.h"
 #import "SetCard.h"
-#import "GameSettings.h"
+#import "SetCardView.h"
+#import "SetCardCollectionViewCell.h"
 
 @interface SetCardGameViewController ()
 
@@ -17,29 +18,45 @@
 
 @implementation SetCardGameViewController
 
-/*
-
-@synthesize game = _game;
-@synthesize gameResult = _gameResult;
-
-- (CardMatchingGame *)game
+- (Deck *)createDeck
 {
-    if (!_game) {
-        _game = [[CardMatchingGame alloc] initWithCardCount:[self.startingCardCount]
-                                                  usingDeck:[[SetCardDeck alloc] init]];
-        _game.numberOfMatchingCards = 3;
-        _game.matchBonus = self.gameSettings.matchBonus;
-        _game.mismatchPenalty = self.gameSettings.mismatchPenalty;
-        _game.flipCost = self.gameSettings.flipCost;
-    }
-    return _game;
+    return [[SetCardDeck alloc] init];
 }
 
-- (GameResult *)gameResult
+- (NSUInteger)startingCardCount
 {
-    if (!_gameResult) _gameResult = [[GameResult alloc] init];
-    _gameResult.gameType = @"Set Game";
-    return _gameResult;
+    return 12;
+}
+
+- (NSUInteger)numberOfMatchingCards
+{
+    return 3;
+}
+
+- (NSString *)gameType
+{
+    return @"Set Game";
+}
+
+- (BOOL)removeUnplayableCards
+{
+    return YES;
+}
+
+- (void)updateCell:(UICollectionViewCell *)cell usingCard:(Card *)card
+{
+    if ([cell isKindOfClass:[SetCardCollectionViewCell class]]) {
+        SetCardView *setCardView = ((SetCardCollectionViewCell *)cell).setCardView;
+        if ([card isKindOfClass:[SetCard class]]) {
+            SetCard *setCard = (SetCard *)card;
+            setCardView.color = setCard.color;
+            setCardView.symbol = setCard.symbol;
+            setCardView.shading = setCard.shading;
+            setCardView.number = setCard.number;
+            setCardView.faceUp = setCard.isFaceUp;
+            setCardView.alpha = setCard.isUnplayable ? 0.3 : 1.0;
+        }
+    }
 }
 
 - (NSAttributedString *)updateAttributedString:(NSAttributedString *)attributedString withAttributesOfCard:(SetCard *)card
@@ -82,34 +99,85 @@
     return mutableAttributedString;
 }
 
-- (void)updateUI
+- (void)addSetCard:(SetCard *)setCard toView:(UIView *)view atX:(CGFloat)x
 {
-    NSAttributedString *lastFlip = [[NSAttributedString alloc] initWithString:self.game.descriptionOfLastFlip ? self.game.descriptionOfLastFlip : @"Flip a card"];
-    
-    for (UIButton *cardButton in self.cardButtons) {
-        Card *card = [self.game cardAtIndex:[self.cardButtons indexOfObject:cardButton]];
-        NSAttributedString *title = [[NSAttributedString alloc] initWithString:card.contents];
-        if ([card isKindOfClass:[SetCard class]]) {
-            SetCard *setCard = (SetCard *)card;
-            title = [self updateAttributedString:title withAttributesOfCard:setCard];
-            lastFlip = [self updateAttributedString:lastFlip withAttributesOfCard:setCard];
-        }
-        [cardButton setAttributedTitle:title forState:UIControlStateNormal];
-        cardButton.selected = card.isFaceUp;
-        cardButton.enabled = !card.isUnplayable;
-        cardButton.alpha = (card.isUnplayable ? 0.3 : 1.0);
-        if (card.isFaceUp) {
-            [cardButton setBackgroundColor:[UIColor colorWithWhite:0.9 alpha:1.0]];
-        } else {
-            [cardButton setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.4]];
-        }
-    }
-    
-    [super updateUI];
-    
-    self.resultOfLastFlipLabel.attributedText = lastFlip;
+    CGFloat height = self.resultOfLastFlipLabel.bounds.size.height;
+    SetCardView *setCardView = [[SetCardView alloc] initWithFrame:CGRectMake(x, 0, height, height)];
+    setCardView.color = setCard.color;
+    setCardView.symbol = setCard.symbol;
+    setCardView.shading = setCard.shading;
+    setCardView.number = setCard.number;
+    setCardView.backgroundColor = [UIColor clearColor];
+    [view addSubview:setCardView];
 }
 
-*/
+#define LASTFLIP_CARD_OFFSET_FACTOR 1.2
+
+- (void)updateUILabel:(UILabel *)label withText:(NSString *)text andSetCards:(NSArray *)setCards
+{
+    if ([setCards count]) {
+        label.text = text;
+        CGFloat x = [label.text sizeWithFont:label.font].width;
+        
+        for (SetCard *setCard in setCards) {
+            [self addSetCard:setCard toView:label atX:x];
+            x += label.bounds.size.height * LASTFLIP_CARD_OFFSET_FACTOR;
+        }
+    } else label.text = @"";
+}
+
+- (void)updateUI
+{
+    [super updateUI];
+    
+    for (UIView *view in self.resultOfLastFlipLabel.subviews) {
+        [view removeFromSuperview];
+    }
+    if (self.game.descriptionOfLastFlip) {
+        if ([self.game.descriptionOfLastFlip rangeOfString:@"Flipped up"].location != NSNotFound) {
+            NSMutableArray *setCards = [[NSMutableArray alloc] init];
+            for (int i = 0; i < self.game.numberOfCards; i++) {
+                Card *card = [self.game cardAtIndex:i];
+                if (card.isFaceUp && [card isKindOfClass:[SetCard class]])
+                    [setCards addObject:(SetCard *)card];
+            }
+            [self updateUILabel:self.resultOfLastFlipLabel withText:@"Flipped up: " andSetCards:setCards];
+        } else if ([self.game.descriptionOfLastFlip rangeOfString:@"Matched"].location != NSNotFound) {
+            [self updateUILabel:self.resultOfLastFlipLabel withText:@"✅ "
+                    andSetCards:[self setCardsFromString:self.game.descriptionOfLastFlip]];
+        } else {
+            [self updateUILabel:self.resultOfLastFlipLabel withText:@"❌ "
+                    andSetCards:[self setCardsFromString:self.game.descriptionOfLastFlip]];
+        }
+    }
+    [self.resultOfLastFlipLabel setNeedsDisplay];
+}
+
+- (NSArray *)setCardsFromString:(NSString *)string
+{
+    NSString *pattern = [NSString stringWithFormat:@"(%@):(%@):(%@):(\\d+)",
+                         [[SetCard validSymbols] componentsJoinedByString:@"|"],
+                         [[SetCard validColors] componentsJoinedByString:@"|"],
+                         [[SetCard validShadings] componentsJoinedByString:@"|"]];
+    NSError *error = NULL;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern
+                                                                           options:NULL
+                                                                             error:&error];
+    if (error) return nil;
+    NSArray *matches = [regex matchesInString:string
+                                      options:NULL
+                                        range:NSMakeRange(0, [string length])];
+    if (![matches count]) return nil;
+    NSMutableArray *setCards = [[NSMutableArray alloc] init];
+    for (NSTextCheckingResult *match in matches) {
+        SetCard *setCard = [[SetCard alloc] init];
+        setCard.symbol = [string substringWithRange:[match rangeAtIndex:1]];
+        setCard.color = [string substringWithRange:[match rangeAtIndex:2]];
+        setCard.shading = [string substringWithRange:[match rangeAtIndex:3]];
+        setCard.number = [[string substringWithRange:[match rangeAtIndex:4]] intValue];
+        [setCards addObject:setCard];
+    }
+    return setCards;
+}
 
 @end

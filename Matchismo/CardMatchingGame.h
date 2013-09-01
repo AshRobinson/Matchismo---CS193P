@@ -24,12 +24,15 @@
 
 @property (nonatomic) int numberOfCards;
 
+@property (nonatomic) BOOL deckIsEmpty;
+
 // designated initializer
 - (id)initWithCardCount:(NSUInteger)count
               usingDeck:(Deck *)deck;
 
 - (Card *)cardAtIndex:(NSUInteger)index;
 - (void)flipCardAtIndex:(NSUInteger)index;
-
+- (void)removeCardAtIndex:(NSUInteger)index;
+- (void)drawNewCard;
 
 @end

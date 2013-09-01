@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		583A2AE517A333B500D526D3 /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = 583A2AE417A333B500D526D3 /* Deck.m */; };
+		58475D7817C431C700238560 /* SetCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58475D7717C431C700238560 /* SetCardView.m */; };
+		58475D7B17C4452400238560 /* SetCardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58475D7A17C4452400238560 /* SetCardCollectionViewCell.m */; };
 		587CBB7117BC170C00E19023 /* PlayingCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 587CBB7017BC170C00E19023 /* PlayingCardView.m */; };
 		587CBB8B17BC17A500E19023 /* J♠.png in Resources */ = {isa = PBXBuildFile; fileRef = 587CBB7317BC17A500E19023 /* J♠.png */; };
 		587CBB8C17BC17A500E19023 /* J♠@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 587CBB7417BC17A500E19023 /* J♠@2x.png */; };
@@ -70,6 +72,10 @@
 /* Begin PBXFileReference section */
 		583A2AE317A333B500D526D3 /* Deck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Deck.h; sourceTree = "<group>"; };
 		583A2AE417A333B500D526D3 /* Deck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Deck.m; sourceTree = "<group>"; };
+		58475D7617C431C700238560 /* SetCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetCardView.h; sourceTree = "<group>"; };
+		58475D7717C431C700238560 /* SetCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetCardView.m; sourceTree = "<group>"; };
+		58475D7917C4452400238560 /* SetCardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetCardCollectionViewCell.h; sourceTree = "<group>"; };
+		58475D7A17C4452400238560 /* SetCardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetCardCollectionViewCell.m; sourceTree = "<group>"; };
 		587CBB6F17BC170C00E19023 /* PlayingCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingCardView.h; sourceTree = "<group>"; };
 		587CBB7017BC170C00E19023 /* PlayingCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCardView.m; sourceTree = "<group>"; };
 		587CBB7317BC17A500E19023 /* J♠.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "J♠.png"; sourceTree = "<group>"; };
@@ -179,6 +185,8 @@
 				58C8EAC217AEEDD600F6F4E7 /* SetCardDeck.m */,
 				58AB056217B03C9800F3E34B /* GameResult.h */,
 				58AB056317B03C9800F3E34B /* GameResult.m */,
+				58AB056817B2E0E500F3E34B /* GameSettings.h */,
+				58AB056917B2E0E500F3E34B /* GameSettings.m */,
 				58A3C2DC17A854DD007345CE /* CardMatchingGame.h */,
 				58A3C2DD17A854DD007345CE /* CardMatchingGame.m */,
 			);
@@ -253,16 +261,18 @@
 				58E45DC217A325D40045B700 /* CardGameViewController.m */,
 				58C8EAC417AEEDF000F6F4E7 /* SetCardGameViewController.h */,
 				58C8EAC517AEEDF000F6F4E7 /* SetCardGameViewController.m */,
-				58AB056817B2E0E500F3E34B /* GameSettings.h */,
-				58AB056917B2E0E500F3E34B /* GameSettings.m */,
 				58AB056517B2DF9000F3E34B /* SettingsViewController.h */,
 				58AB056617B2DF9000F3E34B /* SettingsViewController.m */,
-				58AB055F17B03C5100F3E34B /* GameResultViewController.h */,
 				58AB056017B03C5100F3E34B /* GameResultViewController.m */,
+				58AB055F17B03C5100F3E34B /* GameResultViewController.h */,
 				587CBB6F17BC170C00E19023 /* PlayingCardView.h */,
 				587CBB7017BC170C00E19023 /* PlayingCardView.m */,
+				58475D7617C431C700238560 /* SetCardView.h */,
+				58475D7717C431C700238560 /* SetCardView.m */,
 				587CBBA317BC1F3100E19023 /* PlayingCardCollectionViewCell.h */,
 				587CBBA417BC1F3100E19023 /* PlayingCardCollectionViewCell.m */,
+				58475D7917C4452400238560 /* SetCardCollectionViewCell.h */,
+				58475D7A17C4452400238560 /* SetCardCollectionViewCell.m */,
 				58E45DBE17A325D40045B700 /* MainStoryboard.storyboard */,
 				58E45DAD17A325D40045B700 /* Supporting Files */,
 			);
@@ -411,6 +421,8 @@
 				58AB056A17B2E0E500F3E34B /* GameSettings.m in Sources */,
 				587CBB7117BC170C00E19023 /* PlayingCardView.m in Sources */,
 				587CBBA517BC1F3100E19023 /* PlayingCardCollectionViewCell.m in Sources */,
+				58475D7817C431C700238560 /* SetCardView.m in Sources */,
+				58475D7B17C4452400238560 /* SetCardCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
